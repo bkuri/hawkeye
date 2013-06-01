@@ -1,0 +1,44 @@
+{
+  "name": "hawkeye",
+  "version": "0.0.1",
+  "description": "Monitors files for changes and fires commands straight at them.",
+  "homepage": "http://hawkeye.bkuri.com/",
+  "author": "Bernardo Kuri <hawkeye@bkuri.com> (http://bkuri.com/)",
+  "repository": {
+    "url": ""
+  },
+  "keywords": [
+    "file", "monitor", "watch", "inotify", "utilities"
+  ],
+  "main": "./lib/main",
+  "scripts": {
+    "build": "coffee --bare --compile --output lib src/*.coffee",
+    "prepublish": "coffee --bare --compile --output lib src/*.coffee",
+    "postpublish": "rm -rf lib"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "commander":     "~1.1.1",
+    "inotify":       "~1.2.1",
+    "minilog":       "~0.1.0",
+    "minimatch":     "~0.2.12"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkuri/hawkeye"
+  },
+  "bugs": {
+    "url": "https://github.com/bkuri/hawkeye/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bkuri/hawkeye/blob/master/MIT-LICENSE"
+    }
+  ]
+}
