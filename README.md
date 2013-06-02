@@ -100,10 +100,11 @@ Credits
 -------
 Hawkeye uses the following excellent libraries:
 
-* [commander.js][3] for command-line parsing (like a boss)
-* [node-inotify][4] for tracking directories (like a boss)
-* [minimatch][5] for glob-style file matching (like a boss)
-* [minilog][6] for logging (like a boss)
+* [coffee-script][3] for pragmatic javascript compilation (like a boss)
+* [commander.js][4] for command-line parsing (like a boss)
+* [node-inotify][5] for tracking directories (like a boss)
+* [minimatch][6] for glob-style file matching (like a boss)
+* [minilog][7] for logging (like a boss)
 
 Finally
 -------
@@ -115,10 +116,11 @@ Feel free to fork away and/or submit a pull request. If you want to contact me d
 
 [1]: http://gruntjs.com                                             "Grunt website"
 [2]: https://github.com/l3ib/fsniper                                "fsniper"
-[3]: https://github.com/visionmedia/commander.js                    "Commander.js"
-[4]: https://github.com/c4milo/node-inotify                         "node-inotify"
-[5]: https://github.com/isaacs/minimatch                            "minimatch"
-[6]: https://github.com/mixu/minilog                                "minilog"
-[7]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
-[8]: mailto:hawkeye@bkuri.com                                       "e-mail me"
-[9]: https://twitter.com/bkuri                                      "tweet tweet"
+[3]: https://coffeescript.org/                                      "CoffeeScript"
+[4]: https://github.com/visionmedia/commander.js                    "Commander.js"
+[5]: https://github.com/c4milo/node-inotify                         "node-inotify"
+[6]: https://github.com/isaacs/minimatch                            "minimatch"
+[7]: https://github.com/mixu/minilog                                "minilog"
+[8]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
+[9]: mailto:hawkeye@bkuri.com                                       "e-mail me"
+[10]: https://twitter.com/bkuri                                      "tweet tweet"
