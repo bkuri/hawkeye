@@ -107,7 +107,7 @@ Hawkeye uses the following excellent libraries:
 
 Finally
 -------
-If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background.
+If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (edit as necessary before actually installing it).
 
 Contact
 -------

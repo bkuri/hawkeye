@@ -1,0 +1,10 @@
+[Unit]
+Description=Hawkeye file monitor
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/hawkeye -c /etc/hawkeye.json
+Restart=always
+
+[Install]
+WantedBy=stuff.target
