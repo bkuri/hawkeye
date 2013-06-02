@@ -2,9 +2,10 @@
 'use strict'
 
 APP = 'hawkeye'
+NA = '[n/a]'
 TOKEN = '%%'
 CONFIG_TEMPLATE = '.': '*' : "echo #{TOKEN} was just modified!"
-VERSION = '0.1.3'
+VERSION = '0.1.4'
 
 args = require 'commander'
 CoffeeScript = require '../node_modules/coffee-script'
@@ -21,7 +22,7 @@ MiniLog.pipe(logBackend).format logBackend.formatNpm
 
 class App
   @createConfig: (file) ->
-    fs.writeFile file, (JSON.stringify CONFIG_TEMPLATE, null, 2), (error) ->
+    fs.writeFile file, (JSON.stringify CONFIG_TEMPLATE, null, 4), (error) ->
       if error then log.error error
       else log.info "created config file '#{file}'"
       process.exit if error then 1 else 0
@@ -29,7 +30,7 @@ class App
   constructor: (config, verbose=false) ->
     @addItem = (dir, globs) ->
       callback = (event) ->
-        file = event.name or '[N/A]'
+        file = event.name or NA
         for glob in Object.keys globs
           if minimatch file, glob
             log.info "matched target #{file} with directive '#{glob}'" if verbose
@@ -37,11 +38,17 @@ class App
             log.info "deploying warhead '#{warhead}'" if verbose
             deploy warhead, (error, stdout, stderr) ->
               if error then log.error stderr
-              else log.debug stdout
+              else log.debug if stdout then stdout else NA
 
-      log.info "tracking target '#{path.resolve dir}'" if verbose
-      props = path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
-      inotify.addWatch props
+      try
+        process.chdir path.dirname config
+      catch error
+        log.error error
+        process.exit 1
+      finally
+        log.info "tracking target '#{path.resolve dir}'" if verbose
+        props = path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
+        inotify.addWatch props
 
     @destroy = ->
       log.info "destroyed" if verbose
@@ -59,8 +66,8 @@ class App
 
 args
   .version(VERSION)
-  .option('-c, --config <path>', "set config file path")
-  .option('-C, --create <path>', "create a boilerplate config file in the specified path")
+  .option('-c, --config <path>', "use this config file")
+  .option('-C, --create <path>', "create a new config file")
   .option('-v, --verbose', "output events to stdout")
   .parse process.argv
 
