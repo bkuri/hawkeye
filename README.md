@@ -21,7 +21,7 @@ Examples
 --------
 Create a JSON file on the current path which serves as a config file:
 
-    $ hawkeye -C watch.json
+    $ hawkeye -C ~/.hawkeye.coffee
 
 A file with contents similar to the one below is created. Mind the indentations as they are important (these are actually JSON files, so choose a number of spaces and stick to them throughout your file).
 
@@ -58,13 +58,13 @@ Running
 -------
 Once the config file is saved, point to it using the *-c* switch:
 
-    $ hawkeye -c example.json
+    $ hawkeye -c example.coffee
 
 Add *-v* if you want verbose output:
 
-    $ hawkeye -vc example.json
-    hawkeye info version 0.0.1 deployed
-    hawkeye info opened watch file './example.json'
+    $ hawkeye -vc example.coffee
+    hawkeye info version 0.1.3 deployed
+    hawkeye info opened watch file './example.coffee'
     hawkeye info tracking target '/any/absolute/path'
     hawkeye info tracking target 'relative/paths/too'
 
@@ -93,7 +93,7 @@ Hawkeye uses the following excellent libraries:
 
 Finally
 -------
-If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (please edit as necessary before actually installing it). You can use it in [user mode][8], since hawkeye doesn't need root privileges to track privileged files.
+If you happen to be running this under Linux with systemd, you can use [this service file][8] to run hawkeye in the background (please edit as necessary before actually installing it). You can use it in [user mode][9], since hawkeye doesn't need root privileges to track privileged files.
 
 Contact
 -------
@@ -106,7 +106,7 @@ Feel free to fork away and/or submit a pull request. If you want to contact me d
 [5]: https://github.com/c4milo/node-inotify                         "node-inotify"
 [6]: https://github.com/isaacs/minimatch                            "minimatch"
 [7]: https://github.com/mixu/minilog                                "minilog"
-[8]: https://wiki.archlinux.org/index.php/Systemd/User              "Arch FTW"
-[9]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
+[8]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
+[9]: https://wiki.archlinux.org/index.php/Systemd/User              "Arch FTW"
 [10]: mailto:hawkeye@bkuri.com                                      "e-mail me"
 [11]: https://twitter.com/bkuri                                     "tweet tweet"
