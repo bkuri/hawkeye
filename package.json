@@ -1,7 +1,7 @@
 {
   "name": "hawkeye",
   "version": "0.1.1",
-  "description": "Monitors files for changes and fires commands straight at them.",
+  "description": "Monitors files for changes and fires commands straight at them when they do.",
   "homepage": "http://hawkeye.bkuri.com/",
   "author": "Bernardo Kuri <hawkeye@bkuri.com> (http://bkuri.com/)",
   "repository": {
@@ -11,6 +11,9 @@
     "file", "monitor", "watch", "inotify", "utilities"
   ],
   "main": "./lib/main",
+  "bin": {
+    "hawkeye": "./bin/hawkeye"
+  },
   "scripts": {
     "build": "coffee --bare --compile --output lib src/*.coffee",
     "prepublish": "coffee --bare --compile --output lib src/*.coffee",
