@@ -11,9 +11,7 @@
     "file", "monitor", "watch", "inotify", "utilities"
   ],
   "main": "./lib/main",
-  "bin": {
-    "hawkeye": "./bin/hawkeye"
-  },
+  "bin": "./bin/hawkeye",
   "scripts": {
     "build": "coffee -bco lib src/*.coffee",
     "prepublish": "coffee -bco lib src/*.coffee",
