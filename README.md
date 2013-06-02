@@ -108,11 +108,11 @@ Hawkeye uses the following excellent libraries:
 
 Finally
 -------
-If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (edit as necessary before actually installing it). You can use it in user mode, since hawkeye doesn't need root privileges to track privileged files.
+If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (please edit as necessary before actually installing it). You can use it in [user mode][8], since hawkeye doesn't need root privileges to track privileged files.
 
 Contact
 -------
-Feel free to fork away and/or submit a pull request. If you want to contact me directly, you can email me ([hawkeye at bkuri.com][8]) or send me a tweet ([@bkuri][9]). I read and try to reply to everything.
+Feel free to fork away and/or submit a pull request. If you want to contact me directly, you can email me ([hawkeye at bkuri.com][10]) or send me a tweet ([@bkuri][11]). I read and try to reply to everything.
 
 [1]: http://gruntjs.com                                             "Grunt website"
 [2]: https://github.com/l3ib/fsniper                                "fsniper"
@@ -121,6 +121,7 @@ Feel free to fork away and/or submit a pull request. If you want to contact me d
 [5]: https://github.com/c4milo/node-inotify                         "node-inotify"
 [6]: https://github.com/isaacs/minimatch                            "minimatch"
 [7]: https://github.com/mixu/minilog                                "minilog"
-[8]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
-[9]: mailto:hawkeye@bkuri.com                                       "e-mail me"
-[10]: https://twitter.com/bkuri                                      "tweet tweet"
+[8]: https://wiki.archlinux.org/index.php/Systemd/User              "Arch FTW"
+[9]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
+[10]: mailto:hawkeye@bkuri.com                                      "e-mail me"
+[11]: https://twitter.com/bkuri                                     "tweet tweet"
