@@ -3,7 +3,7 @@ Description=Hawkeye file monitor
 After=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/hawkeye -c /etc/hawkeye.json
+ExecStart=/usr/bin/hawkeye -c ~/.hawkeye.coffee
 Restart=always
 
 [Install]

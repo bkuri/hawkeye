@@ -51,7 +51,7 @@ class App
     fs.readFile config, 'utf-8', (error, data) =>
       if error
         log.error "error opening file '#{config}'. Check your syntax."
-        return
+        process.exit 1
 
       log.info "opened watch file '#{config}'" if verbose
       items = eval CoffeeScript.compile data, bare:true
