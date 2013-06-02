@@ -23,13 +23,10 @@ Create a JSON file on the current path which serves as a config file:
 
     $ hawkeye -C watch.json
 
-A file with contents similar to this one is created:
+A file with contents similar to the one below is created. Mind the indentations as they are important (these are actually JSON files, so choose a number of spaces and stick to them throughout your file).
 
-    {
-      "/your/path" : {
-        "*" : "echo the file %% was just modified!"
-      }
-    }
+    "/your/path":
+        "*": "echo the file %% was just modified!"
 
 Specify the path that you want to track by changing */your/path* with... well, your path. Then simply provide a pattern to track file(s) and the command to execute once a modification is detected. The two percentage signs get replaced with the absolute path of the file being tracked at runtime. For example, if you create a file called /your/path/example.txt, you will get the following command:
 
@@ -39,34 +36,23 @@ Which in this case will simply (you guessed it) echo that command on screen.
 
 A slightly more complicated example:
 
-    {
-      "/etc" : {
-        "*.conf" : "logger someone just changed %%"
-      },
-      "/mnt/downloads/" : {
-        "*.pdf" : "mupdf %%",
-        "*.zip" : "unzip %%"
-      }
-    }
+    "/etc":
+        "*.conf": "logger someone just changed %%"
+    "/mnt/downloads/":
+        "*.pdf": "mupdf %%"
+        "*.zip": "unzip %%"
 
 Both abosulte and relative paths work, so you can simply use a single dot to specify the current working directory:
 
-    {
-      "." : {
+    ".":
         "*.txt" : "echo the text file %% was just detected."
-      }
-    }
 
 The tracking is NOT made recursively, so you will need to specify both the parent and child paths if you want to track them both:
 
-    {
-      "downloads/" : {
-        "*.pdf" : "logger 'new download: %%'"
-      },
-      "downloads/ebooks" : {
-        "*.pdf" : "mupdf %%"
-      }
-    }
+    "downloads/":
+        "*.pdf": "logger 'new download: %%'"
+    "downloads/ebooks":
+        "*.pdf": "mupdf %%"
 
 Running
 -------
@@ -89,7 +75,6 @@ Usage
     Usage: hawkeye [options]
 
       Options:
-
         -h, --help           output usage information
         -V, --version        output the version number
         -c, --config <path>  set config file path
