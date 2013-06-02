@@ -4,7 +4,7 @@
 APP = 'hawkeye'
 TOKEN = '%%'
 CONFIG_TEMPLATE = '.': '*' : "echo #{TOKEN} was just modified!"
-VERSION = '0.1.1'
+VERSION = '0.1.2'
 
 args = require 'commander'
 deploy = require('child_process').exec
