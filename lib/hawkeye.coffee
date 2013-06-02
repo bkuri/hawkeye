@@ -1,4 +1,4 @@
-#!/usr/bin/env coffee
+#!../node_modules/coffee-script/bin/coffee
 'use strict'
 
 APP = 'hawkeye'

@@ -2,32 +2,22 @@
   "name": "hawkeye",
   "version": "0.1.1",
   "description": "Monitors files for changes and fires commands straight at them when they do.",
-  "homepage": "http://hawkeye.bkuri.com/",
+  "homepage": "https://github.com/bkuri/hawkeye",
   "author": "Bernardo Kuri <hawkeye@bkuri.com> (http://bkuri.com/)",
-  "repository": {
-    "url": ""
-  },
   "keywords": [
     "file", "monitor", "watch", "inotify", "utilities"
   ],
-  "main": "./lib/main",
+  "main": "./lib/hawkeye",
   "bin": "./bin/hawkeye",
   "scripts": {
-    "build": "coffee -bco lib src/*.coffee",
-    "prepublish": "coffee -bco lib src/*.coffee",
-    "postpublish": "rm -rf lib"
-  },
-  "engines": {
-    "node": "*"
+    "prepublish": "./node_modules/coffee-script/bin/coffee -bc lib"
   },
   "dependencies": {
+    "coffee-script": "~1.6.2",
     "commander":     "~1.1.1",
     "inotify":       "~1.2.1",
     "minilog":       "~0.1.0",
     "minimatch":     "~0.2.12"
-  },
-  "devDependencies": {
-    "coffee-script": "~1.6.2"
   },
   "repository": {
     "type": "git",
