@@ -15,8 +15,8 @@
     "hawkeye": "./bin/hawkeye"
   },
   "scripts": {
-    "build": "coffee --bare --compile --output lib src/*.coffee",
-    "prepublish": "coffee --bare --compile --output lib src/*.coffee",
+    "build": "coffee -bco lib src/*.coffee",
+    "prepublish": "coffee -bco lib src/*.coffee",
     "postpublish": "rm -rf lib"
   },
   "engines": {
