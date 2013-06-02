@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env coffee
 'use strict'
 path = require 'path'
 fs = require 'fs'
