@@ -1,4 +1,4 @@
-# hawkeye - track files and fire commands at them (like a boss).
+# hawkeye - track files and fire commands at them with absolute precision.
 
 Why reinvent the wheel?
 -----------------------
@@ -85,25 +85,28 @@ Credits
 -------
 Hawkeye uses the following excellent libraries:
 
-* [commander.js][3] for command-line parsing (like a boss)
-* [node-inotify][4] for tracking directories (like a boss)
-* [minimatch][5] for glob-style file matching (like a boss)
-* [minilog][6] for logging (like a boss)
+* [coffee-script][3] for pragmatic javascript compilation
+* [commander.js][4] for pragmatic command-line parsing
+* [node-inotify][5] for precise tracking of directories
+* [minimatch][6] for flexible glob-style file matching
+* [minilog][7] for flexible logging
 
 Finally
 -------
-If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (edit as necessary before actually installing it).
+If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (please edit as necessary before actually installing it). You can use it in [user mode][8], since hawkeye doesn't need root privileges to track privileged files.
 
 Contact
 -------
-Feel free to fork away and/or submit a pull request. If you want to contact me directly, you can email me ([hawkeye at bkuri.com][8]) or send me a tweet ([@bkuri][9]). I read and try to reply to everything.
+Feel free to fork away and/or submit a pull request. If you want to contact me directly, you can email me ([hawkeye at bkuri.com][10]) or send me a tweet ([@bkuri][11]). I read and try to reply to everything.
 
-[1]: http://gruntjs.com                          "Grunt website"
-[2]: https://github.com/l3ib/fsniper             "fsniper"
-[3]: https://github.com/visionmedia/commander.js "Commander.js"
-[4]: https://github.com/c4milo/node-inotify      "node-inotify"
-[5]: https://github.com/isaacs/minimatch         "minimatch"
-[6]: https://github.com/mixu/minilog             "minilog"
-[7]: https://dropbox.com/                        "systemd service file"
-[8]: mailto:hawkeye@bkuri.com                    "e-mail me"
-[9]: https://twitter.com/bkuri                   "tweet tweet"
+[1]: http://gruntjs.com                                             "Grunt website"
+[2]: https://github.com/l3ib/fsniper                                "fsniper"
+[3]: https://coffeescript.org/                                      "CoffeeScript"
+[4]: https://github.com/visionmedia/commander.js                    "Commander.js"
+[5]: https://github.com/c4milo/node-inotify                         "node-inotify"
+[6]: https://github.com/isaacs/minimatch                            "minimatch"
+[7]: https://github.com/mixu/minilog                                "minilog"
+[8]: https://wiki.archlinux.org/index.php/Systemd/User              "Arch FTW"
+[9]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
+[10]: mailto:hawkeye@bkuri.com                                      "e-mail me"
+[11]: https://twitter.com/bkuri                                     "tweet tweet"
