@@ -1,4 +1,4 @@
-# hawkeye - track files and fire commands at them like a hawk (obviously).
+# hawkeye - track files and fire commands at them with absolute precission.
 
 Why reinvent the wheel?
 -----------------------
@@ -101,14 +101,14 @@ Credits
 Hawkeye uses the following excellent libraries:
 
 * [coffee-script][3] for pragmatic javascript compilation
-* [commander.js][4] for command-line parsing
-* [node-inotify][5] for tracking directories
-* [minimatch][6] for glob-style file matching
-* [minilog][7] for logging
+* [commander.js][4] for pragmatic command-line parsing
+* [node-inotify][5] for precise tracking of directories
+* [minimatch][6] for flexible glob-style file matching
+* [minilog][7] for flexible logging
 
 Finally
 -------
-If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (edit as necessary before actually installing it).
+If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (edit as necessary before actually installing it). You can use it in user mode, since hawkeye doesn't need root privileges to track privileged files.
 
 Contact
 -------
