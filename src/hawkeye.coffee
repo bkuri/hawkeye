@@ -5,7 +5,7 @@ APP = 'hawkeye'
 INOTIFY_LIB = '/usr/lib/node_modules/inotify'
 TOKEN = '%%'
 CONFIG_TEMPLATE = '.': '*' : "echo #{TOKEN} was just modified!"
-VERSION = '0.1'
+VERSION = '0.1.1'
 
 args = require 'commander'
 deploy = require('child_process').exec

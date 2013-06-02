@@ -1,6 +1,6 @@
 {
   "name": "hawkeye",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "Monitors files for changes and fires commands straight at them.",
   "homepage": "http://hawkeye.bkuri.com/",
   "author": "Bernardo Kuri <hawkeye@bkuri.com> (http://bkuri.com/)",
