@@ -1,4 +1,4 @@
-# hawkeye - track files and fire commands at them (like a boss).
+# hawkeye - track files and fire commands at them like a hawk (obviously).
 
 Why reinvent the wheel?
 -----------------------
@@ -100,11 +100,11 @@ Credits
 -------
 Hawkeye uses the following excellent libraries:
 
-* [coffee-script][3] for pragmatic javascript compilation (like a boss)
-* [commander.js][4] for command-line parsing (like a boss)
-* [node-inotify][5] for tracking directories (like a boss)
-* [minimatch][6] for glob-style file matching (like a boss)
-* [minilog][7] for logging (like a boss)
+* [coffee-script][3] for pragmatic javascript compilation
+* [commander.js][4] for command-line parsing
+* [node-inotify][5] for tracking directories
+* [minimatch][6] for glob-style file matching
+* [minilog][7] for logging
 
 Finally
 -------
