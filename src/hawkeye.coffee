@@ -5,7 +5,7 @@ APP = 'hawkeye'
 INOTIFY_LIB = '/usr/lib/node_modules/inotify'
 TOKEN = '%%'
 CONFIG_TEMPLATE = '.': '*' : "echo #{TOKEN} was just modified!"
-VERSION = '0.0.1'
+VERSION = '0.1'
 
 args = require 'commander'
 deploy = require('child_process').exec
@@ -32,7 +32,7 @@ class App
         for glob in Object.keys globs
           if minimatch file, glob
             log.info "matched target #{file} with directive '#{glob}'" if verbose
-            warhead = globs[glob].replace TOKEN, (path + file)
+            warhead = globs[glob].replace TOKEN, "#{path}/#{file}"
             log.info "deploying warhead '#{warhead}'" if verbose
             deploy warhead, (error, stdout, stderr) ->
               if error then log.error stderr

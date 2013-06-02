@@ -6,9 +6,7 @@ This functionality was inspired by tools like [grunt][1] and [fsniper][2] (to na
 
 Target any file
 ---------------
-You can use any valid glob-style pattern to target files. This is very useful for anything that requires real-time execution of a specific command as soon as a file changes on disk.
-
-If you already know you way around the command line, you probably already know how to glob files:
+You can use any valid glob-style pattern to target files. If you already know you way around the command line, you probably already know how to glob files:
 
 * A single asterisk (\*) selects everything
 * Specific extensions are specified with an asterisk followed by the extension (\*.txt)
@@ -62,7 +60,7 @@ Both abosulte and relative paths work, so you can simply use a single dot to spe
 The tracking is NOT made recursively, so you will need to specify both the parent and child paths if you want to track them both:
 
     {
-      "downloads/": {
+      "downloads/" : {
         "*.pdf" : "logger 'new download: %%'"
       },
       "downloads/ebooks" : {
