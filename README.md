@@ -1,8 +1,8 @@
-# hawkeye - track files and deploy commands at them.
+# hawkeye - track files and fire commands at them (like a boss).
 
 Why reinvent the wheel?
 -----------------------
-This functionality was inspired by tools like [grunt][1] and [fsniper][2] (to name a few). The reason why I decided to take a whack at it was because I thought they are either too complex for the job at hand or too difficult to configure. Hawkeye uses a very simple configuration syntax to get you going. Plus it's written in around 70 lines of coffesscript, which is stuff that only nerds like me appreciate.
+This functionality was inspired by tools like [grunt][1] and [fsniper][2] (to name a couple). The reason why I decided to take a whack at it was because I thought they are either too complex for the job at hand or too difficult to configure. Hawkeye uses a very simple configuration syntax to get you going. Plus it has a method called "deploy(warhead)" that actually works, which is just plain awesome.
 
 Target any file
 ---------------
@@ -43,11 +43,11 @@ A slightly more complicated example:
 
     {
       "/etc" : {
-        "*.conf" : "logger someone just changed %%",
+        "*.conf" : "logger someone just changed %%"
       },
       "/mnt/downloads/" : {
         "*.pdf" : "mupdf %%",
-        "*.zip": "unzip %%"
+        "*.zip" : "unzip %%"
       }
     }
 
@@ -109,7 +109,7 @@ Hawkeye uses the following excellent libraries:
 
 Finally
 -------
-If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background (like a boss).
+If you happen to be running this under Linux with systemd, you can use [this service file][7] to run hawkeye in the background.
 
 Contact
 -------

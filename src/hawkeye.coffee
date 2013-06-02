@@ -15,11 +15,12 @@ inotify = new Inotify()
 minimatch = require 'minimatch'
 MiniLog = require 'minilog'
 log = MiniLog APP
-MiniLog.pipe process.stdout
+logBackend = MiniLog.backends.nodeConsole
+MiniLog.pipe(logBackend).format logBackend.formatNpm
 
 class App
   @createConfig: (file) ->
-    fs.writeFile file, JSON.stringify CONFIG_TEMPLATE, (error) ->
+    fs.writeFile file, (JSON.stringify CONFIG_TEMPLATE, null, 2), (error) ->
       if error then log.error error
       else log.info "created config file '#{file}'"
       process.exit if error then 1 else 0
