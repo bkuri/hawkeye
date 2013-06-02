@@ -113,12 +113,12 @@ Contact
 -------
 Feel free to fork away and/or submit a pull request. If you want to contact me directly, you can email me ([hawkeye at bkuri.com][8]) or send me a tweet ([@bkuri][9]). I read and try to reply to everything.
 
-[1]: http://gruntjs.com                          "Grunt website"
-[2]: https://github.com/l3ib/fsniper             "fsniper"
-[3]: https://github.com/visionmedia/commander.js "Commander.js"
-[4]: https://github.com/c4milo/node-inotify      "node-inotify"
-[5]: https://github.com/isaacs/minimatch         "minimatch"
-[6]: https://github.com/mixu/minilog             "minilog"
-[7]: https://dropbox.com/                        "systemd service file"
-[8]: mailto:hawkeye@bkuri.com                    "e-mail me"
-[9]: https://twitter.com/bkuri                   "tweet tweet"
+[1]: http://gruntjs.com                                             "Grunt website"
+[2]: https://github.com/l3ib/fsniper                                "fsniper"
+[3]: https://github.com/visionmedia/commander.js                    "Commander.js"
+[4]: https://github.com/c4milo/node-inotify                         "node-inotify"
+[5]: https://github.com/isaacs/minimatch                            "minimatch"
+[6]: https://github.com/mixu/minilog                                "minilog"
+[7]: https://github.com/bkuri/hawkeye/raw/master/hawkeye.service    "systemd service file"
+[8]: mailto:hawkeye@bkuri.com                                       "e-mail me"
+[9]: https://twitter.com/bkuri                                      "tweet tweet"
