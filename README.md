@@ -1,4 +1,4 @@
-# hawkeye - track files and fire commands at them with absolute precission.
+# hawkeye - track files and fire commands at them with absolute precision.
 
 Why reinvent the wheel?
 -----------------------
