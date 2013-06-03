@@ -1,10 +1,8 @@
 #!../node_modules/coffee-script/bin/coffee
 'use strict'
 
-APP = 'hawkeye'
-NA = '[n/a]'
-TOKEN = '%%'
-CONFIG_TEMPLATE = '.': '*' : "echo #{TOKEN} was just modified!"
+CONFIG_TEMPLATE = '.': '*' : "echo %% was just modified!"
+NA = '[not available]'
 VERSION = '0.1.4'
 
 args = require 'commander'
@@ -16,7 +14,7 @@ inotify = new Inotify()
 minimatch = require 'minimatch'
 path = require 'path'
 MiniLog = require 'minilog'
-log = MiniLog APP
+log = MiniLog 'hawkeye'
 logBackend = MiniLog.backends.nodeConsole
 MiniLog.pipe(logBackend).format logBackend.formatNpm
 
@@ -34,7 +32,7 @@ class App
         for glob in Object.keys globs
           if minimatch file, glob
             log.info "matched target #{file} with directive '#{glob}'" if verbose
-            warhead = globs[glob].replace TOKEN, (path.join dir, file)
+            warhead = globs[glob].replace '%%', (path.join dir, file)
             log.info "deploying warhead '#{warhead}'" if verbose
             deploy warhead, (error, stdout, stderr) ->
               if error then log.error stderr
@@ -46,12 +44,13 @@ class App
         log.error error
         process.exit 1
       finally
-        log.info "tracking target '#{path.resolve dir}'" if verbose
+        dir = path.resolve dir
+        log.info "tracking target '#{dir}'" if verbose
         props = path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
         inotify.addWatch props
 
     @destroy = ->
-      log.info "destroyed" if verbose
+      log.info "hawkeye down" if verbose
       inotify.close()
 
     log.info "version #{VERSION} deployed" if verbose
