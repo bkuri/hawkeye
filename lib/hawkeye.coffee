@@ -3,7 +3,7 @@
 
 CONFIG_TEMPLATE = '.': '*' : "echo %% was just modified!"
 NA = '[not available]'
-VERSION = '0.1.4'
+VERSION = '0.1.5'
 
 args = require 'commander'
 CoffeeScript = require '../node_modules/coffee-script'

@@ -63,7 +63,7 @@ Once the config file is saved, point to it using the *-c* switch:
 Add *-v* if you want verbose output:
 
     $ hawkeye -vc example.coffee
-    hawkeye info version 0.1.3 deployed
+    hawkeye info version 0.1.5 deployed
     hawkeye info opened watch file './example.coffee'
     hawkeye info tracking target '/any/absolute/path'
     hawkeye info tracking target 'relative/paths/too'
