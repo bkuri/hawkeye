@@ -8,8 +8,8 @@ Target any file
 ---------------
 You can use any valid glob-style pattern to target files. If you already know you way around the command line, you probably already know how to glob files:
 
-* A single asterisk (\*) selects everything
-* Specific extensions are specified with an asterisk followed by the extension (\*.txt)
+* A single asterisk (\*) selects everything in that folder
+* Specific extensions are specified with an asterisk followed by the file extension (\*.txt)
 * A literal file name can be specified by just naming it (i.e. *example.txt*)
 * More complex patterns can be found in the [minimatch readme][3]
 
@@ -19,11 +19,11 @@ The moment a tracked file is modified on disk, the related command is executed a
 
 Examples
 --------
-Create a JSON file on the current path which serves as a config file:
+Create a file on the current path (called '.hawkeye' by default) with the following command:
 
-    $ hawkeye -C ~/.hawkeye.coffee
+    $ hawkeye -C
 
-A file with contents similar to the one below is created. Mind the indentations as they are important (these are actually JSON files, so choose a number of spaces and stick to them throughout your file).
+A file with contents similar to the one below is created. Spacing at the start of each pattern is important to indicate that it belongs to the upper (non-indented) line:
 
     "/your/path":
         "*": "echo the file %% was just modified!"
@@ -56,15 +56,15 @@ The tracking is NOT made recursively, so you will need to specify both the paren
 
 Running
 -------
-Once the config file is saved, point to it using the *-c* switch:
+Once the config file is saved run the executable in the same path as your config file (or alternatively point to it using the *-c* switch):
 
-    $ hawkeye -c example.coffee
+    $ hawkeye -c path/to/config
 
 Add *-v* if you want verbose output:
 
-    $ hawkeye -vc example.coffee
-    hawkeye info version 0.1.5 deployed
-    hawkeye info opened watch file './example.coffee'
+    $ hawkeye -v
+    hawkeye info version 0.1.7 deployed
+    hawkeye info opened watch file './.hawkeye'
     hawkeye info tracking target '/any/absolute/path'
     hawkeye info tracking target 'relative/paths/too'
 
@@ -77,8 +77,8 @@ Usage
       Options:
         -h, --help           output usage information
         -V, --version        output the version number
-        -c, --config <path>  set config file path
-        -C, --create <path>  create a boilerplate config file in the specified path
+        -c, --config [path]  set config file path [.hawkeye]
+        -C, --create [path]  create a new config file here [.hawkeye]
         -v, --verbose        output events to stdout
 
 Credits
