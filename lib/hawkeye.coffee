@@ -4,7 +4,7 @@
 CONFIG_TEMPLATE = "'.':\n\t'*': 'echo %% was just modified!'\n"
 DEFAULT_FILENAME = '.hawkeye'
 RE_ENV = /\$(\S+)/
-VERSION = '0.2.1'
+VERSION = '0.2.2'
 
 args = require 'commander'
 CoffeeScript = require '../node_modules/coffee-script'
@@ -39,7 +39,7 @@ class App
       h: process.env.PWD
       '': path.join dir, file
 
-    text = (text.replace "%%#{key}", rules[key]) for key in Object.keys rules
+    text = text.replace (new RegExp "%%#{key}", 'g'), rules[key] for key in Object.keys rules
     text
 
   constructor: (config, verbose=false) ->
