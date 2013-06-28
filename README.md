@@ -56,14 +56,14 @@ The tracking is NOT made recursively, so you will need to specify both the paren
 
 Expanded variables
 ------------------
-As of v0.2 you can now expand the following variables in addition to :
+As of v0.2.0 you can now expand the following variables (in addition to %%):
 
-    %%b   *b*are file name (without path or extension)
-    %%c   *c*urrent working directory (full path)
-    %%d   *d*ate (uses Date.toISOString format)
-    %%e   file *e*xtension (ie ".html")
-    %%f   *f*ilename with extension (ie "index.html")
-    %%h   *h*awkeye's working directory (where it was first run)
+    %%b   [b]are file name (without path or extension)
+    %%c   [c]urrent working directory (full path)
+    %%d   [d]ate (uses Date.toISOString format)
+    %%e   file [e]xtension (ie ".html")
+    %%f   [f]ilename with extension (ie "index.html")
+    %%h   [h]awkeye's working directory (where it was first run)
 
 Environment variables
 ---------------------
@@ -81,7 +81,7 @@ Once the config file is saved run the executable in the same path as your config
 Add *-v* if you want verbose output:
 
     $ hawkeye -v
-    hawkeye info version 0.2.0 deployed
+    hawkeye info version 0.2.1 deployed
     hawkeye info opened watch file './.hawkeye'
     hawkeye info tracking target '/any/absolute/path'
     hawkeye info tracking target 'relative/paths/too'

@@ -4,47 +4,23 @@
 CONFIG_TEMPLATE = "'.':\n\t'*': 'echo %% was just modified!'\n"
 DEFAULT_FILENAME = '.hawkeye'
 RE_ENV = /\$(\S+)/
-VERSION = '0.2.0'
+VERSION = '0.2.1'
 
-CoffeeScript = require '../node_modules/coffee-script'
-Inotify = require('inotify').Inotify
-MiniLog = require 'minilog'
-MiniLog.pipe(logBackend).format logBackend.formatNpm
 args = require 'commander'
+CoffeeScript = require '../node_modules/coffee-script'
 deploy = require('child_process').exec
 fs = require 'fs'
+Inotify = require('inotify').Inotify
 inotify = new Inotify()
-log = MiniLog 'hawkeye'
-logBackend = MiniLog.backends.nodeConsole
 minimatch = require 'minimatch'
 path = require 'path'
+MiniLog = require 'minilog'
+log = MiniLog 'hawkeye'
+logBackend = MiniLog.backends.nodeConsole
+MiniLog.pipe(logBackend).format logBackend.formatNpm
 
 class App
-  @addItem: (dir, globs) ->
-    callback = (event) ->
-      file = event.name or 'n/a'
-      for glob in Object.keys globs
-        if minimatch file, glob
-          log.debug "file #{file} matched pattern '#{glob}'"
-          warhead = App.handle globs[glob], dir, file
-          log.info "launching '#{warhead}'" if verbose
-          deploy warhead, (error, stdout, stderr) ->
-            if error then log.error stderr
-            else if stdout then log.debug stdout
-
-    try
-      process.chdir path.dirname config
-    catch error
-      log.error error
-      process.exit 1
-    finally
-      env = dir.match RE_ENV
-      dir = path.resolve unless env then dir else dir.replace env[0], process.env[env[1]]
-      log.info "tracking target '#{dir}'" if verbose
-      inotify.addWatch path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
-
-  @coffee: (data) -> eval CoffeeScript.compile data, bare: true
-
+  @coffee: (data) -> eval CoffeeScript.compile data, bare:true
   @createConfig: (file=DEFAULT_FILENAME) ->
     fs.writeFile file, CONFIG_TEMPLATE, (error) ->
       if error then log.error error
@@ -52,7 +28,9 @@ class App
       process.exit if error then 1 else 0
 
   @handle: (text, dir, file) ->
-    vars =
+    env = text.match RE_ENV
+    text = unless env then text else text.replace env[0], process.env[env[1]]
+    rules =
       b: path.basename file, path.extname file
       c: dir
       d: new Date().toISOString()
@@ -61,12 +39,33 @@ class App
       h: process.env.PWD
       '': path.join dir, file
 
-    env = text.match RE_ENV
-    text = unless env then text else text.replace env[0], process.env[env[1]]
-    text = (text.replace "%%#{key}", vars[key]) for key in Object.keys vars
+    text = (text.replace "%%#{key}", rules[key]) for key in Object.keys rules
     text
 
   constructor: (config, verbose=false) ->
+    @addItem = (dir, globs) ->
+      callback = (event) ->
+        file = event.name or 'n/a'
+        for glob in Object.keys globs
+          if minimatch file, glob
+            log.debug "file #{file} matched pattern '#{glob}'"
+            warhead = App.handle globs[glob], dir, file
+            log.info "launching '#{warhead}'" if verbose
+            deploy warhead, (error, stdout, stderr) ->
+              if error then log.error stderr
+              else if stdout then log.debug stdout
+
+      try
+        process.chdir path.dirname config
+      catch error
+        log.error error
+        process.exit 1
+      finally
+        env = dir.match RE_ENV
+        dir = path.resolve unless env then dir else dir.replace env[0], process.env[env[1]]
+        log.info "tracking target '#{dir}'" if verbose
+        inotify.addWatch path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
+
     fs.readFile config, 'utf-8', (error, data) =>
       if error
         log.error "error opening file '#{path.resolve config}'. Check your syntax."
@@ -75,7 +74,7 @@ class App
       log.info "version #{VERSION} deployed" if verbose
       log.info "opened watch file '#{path.resolve config}'" if verbose
       items = App.coffee data
-      App.addItem item, items[item] for item in Object.keys items
+      @addItem item, items[item] for item in Object.keys items
 
 args
   .version(VERSION)
