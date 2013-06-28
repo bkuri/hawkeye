@@ -3,7 +3,8 @@
 
 CONFIG_TEMPLATE = "'.':\n\t'*': 'echo %% was just modified!'\n"
 DEFAULT_FILENAME = '.hawkeye'
-VERSION = '0.1.7'
+RE_ENV = /\$(\S+)/
+VERSION = '0.1.8'
 
 args = require 'commander'
 CoffeeScript = require '../node_modules/coffee-script'
@@ -26,15 +27,26 @@ class App
       else log.info "created config file '#{file}'"
       process.exit if error then 1 else 0
 
+  @handle: (text, dir, file) ->
+    env = text.match RE_ENV
+    text = unless env then text else text.replace env[0], process.env[env[1]]
+    text = text.replace /%{2}b/, path.basename file, path.extname file
+    text = text.replace /%{2}c/, process.env.PWD
+    text = text.replace /%{2}d/, dir
+    text = text.replace /%{2}e/, path.extname file
+    text = text.replace /%{2}f/, path.basename file
+    text = text.replace /%{2}/, (path.join dir, file)
+    text
+
   constructor: (config, verbose=false) ->
     @addItem = (dir, globs) ->
       callback = (event) ->
         file = event.name or 'n/a'
         for glob in Object.keys globs
           if minimatch file, glob
-            log.info "file #{file} matched pattern '#{glob}'" if verbose
-            warhead = globs[glob].replace '%%', (path.join dir, file)
-            log.info "deploying warhead '#{warhead}'" if verbose
+            log.debug "file #{file} matched pattern '#{glob}'"
+            warhead = App.handle globs[glob], dir, file
+            log.info "launching '#{warhead}'" if verbose
             deploy warhead, (error, stdout, stderr) ->
               if error then log.error stderr
               else if stdout then log.debug stdout
@@ -45,13 +57,13 @@ class App
         log.error error
         process.exit 1
       finally
-        dir = path.resolve dir
+        env = dir.match RE_ENV
+        dir = path.resolve unless env then dir else dir.replace env[0], process.env[env[1]]
         log.info "tracking target '#{dir}'" if verbose
-        props = path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
-        inotify.addWatch props
+        inotify.addWatch path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
 
     @destroy = ->
-      log.info "hawkeye down" if verbose
+      log.info "hawkeye is going down..." if verbose
       inotify.close()
 
     log.info "version #{VERSION} deployed" if verbose
