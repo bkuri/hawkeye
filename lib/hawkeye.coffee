@@ -4,7 +4,7 @@
 CONFIG_TEMPLATE = "'.':\n\t'*': 'echo %% was just modified!'\n"
 DEFAULT_FILENAME = '.hawkeye'
 RE_ENV = /\$(\S+)/
-VERSION = '0.2'
+VERSION = '0.2.0'
 
 CoffeeScript = require '../node_modules/coffee-script'
 Inotify = require('inotify').Inotify
