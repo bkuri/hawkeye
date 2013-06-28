@@ -56,17 +56,18 @@ The tracking is NOT made recursively, so you will need to specify both the paren
 
 Expanded variables
 ------------------
-As of v1.9 you can now expand the following variables:
+As of v0.2 you can now expand the following variables in addition to :
 
     %%b   *b*are file name (without path or extension)
-    %%d   current working *d*irectory (full path)
+    %%c   *c*urrent working directory (full path)
+    %%d   *d*ate (uses Date.toISOString format)
     %%e   file *e*xtension (ie ".html")
     %%f   *f*ilename with extension (ie "index.html")
     %%h   *h*awkeye's working directory (where it was first run)
 
 Environment variables
 ---------------------
-As of v1.8 you now have access to shell environment variables. For example, assuming that you have a variable in your .bashrc called APP_DIR pointing to a directory, you could use a rule like:
+As of v0.1.8 you now have access to shell environment variables. For example, assuming that you have a variable in your .bashrc called APP_DIR pointing to a directory, you could use a rule like:
 
     "$APP_DIR":
       "*.html": "The file %%f was modified inside $APP_DIR"
