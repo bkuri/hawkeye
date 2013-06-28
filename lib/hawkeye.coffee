@@ -4,7 +4,7 @@
 CONFIG_TEMPLATE = "'.':\n\t'*': 'echo %% was just modified!'\n"
 DEFAULT_FILENAME = '.hawkeye'
 RE_ENV = /\$(\S+)/
-VERSION = '0.1.8'
+VERSION = '0.1.9'
 
 args = require 'commander'
 CoffeeScript = require '../node_modules/coffee-script'
@@ -31,10 +31,10 @@ class App
     env = text.match RE_ENV
     text = unless env then text else text.replace env[0], process.env[env[1]]
     text = text.replace /%{2}b/, path.basename file, path.extname file
-    text = text.replace /%{2}c/, process.env.PWD
     text = text.replace /%{2}d/, dir
     text = text.replace /%{2}e/, path.extname file
     text = text.replace /%{2}f/, path.basename file
+    text = text.replace /%{2}h/, process.env.PWD
     text = text.replace /%{2}/, (path.join dir, file)
     text
 

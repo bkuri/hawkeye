@@ -54,6 +54,23 @@ The tracking is NOT made recursively, so you will need to specify both the paren
     "downloads/ebooks":
         "*.pdf": "mupdf %%"
 
+Expanded variables
+------------------
+As of v1.9 you can now expand the following variables:
+
+    %%b   *b*are file name (without path or extension)
+    %%d   current working *d*irectory (full path)
+    %%e   file *e*xtension (ie ".html")
+    %%f   *f*ilename with extension (ie "index.html")
+    %%h   *h*awkeye's working directory (where it was first run)
+
+Environment variables
+---------------------
+As of v1.8 you now have access to shell environment variables. For example, assuming that you have a variable in your .bashrc called APP_DIR pointing to a directory, you could use a rule like:
+
+    "$APP_DIR":
+      "*.html": "The file %%f was modified inside $APP_DIR"
+
 Running
 -------
 Once the config file is saved run the executable in the same path as your config file (or alternatively point to it using the *-c* switch):
@@ -63,7 +80,7 @@ Once the config file is saved run the executable in the same path as your config
 Add *-v* if you want verbose output:
 
     $ hawkeye -v
-    hawkeye info version 0.1.7 deployed
+    hawkeye info version 0.1.9 deployed
     hawkeye info opened watch file './.hawkeye'
     hawkeye info tracking target '/any/absolute/path'
     hawkeye info tracking target 'relative/paths/too'
