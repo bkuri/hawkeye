@@ -4,7 +4,7 @@
 CONFIG_TEMPLATE = "'.':\n\t'*': 'echo %% was just modified!'\n"
 DEFAULT_FILENAME = '.hawkeye'
 RE_ENV = /\$(\S+)/
-VERSION = '0.2.2'
+VERSION = '0.2.3'
 
 args = require 'commander'
 CoffeeScript = require '../node_modules/coffee-script'
@@ -29,7 +29,7 @@ class App
 
   @handle: (text, dir, file) ->
     env = text.match RE_ENV
-    text = unless env then text else text.replace env[0], process.env[env[1]]
+    text = unless env then text else text.replace (new RegExp env[0], 'g'), process.env[env[1]]
     rules =
       b: path.basename file, path.extname file
       c: dir
@@ -62,7 +62,7 @@ class App
         process.exit 1
       finally
         env = dir.match RE_ENV
-        dir = path.resolve unless env then dir else dir.replace env[0], process.env[env[1]]
+        dir = path.resolve unless env then dir else dir.replace (new RegExp env[0], 'g'), process.env[env[1]]
         log.info "tracking target '#{dir}'" if verbose
         inotify.addWatch path: dir, watch_for: Inotify.IN_CLOSE_WRITE, callback: callback
 

@@ -81,7 +81,7 @@ Once the config file is saved run the executable in the same path as your config
 Add *-v* if you want verbose output:
 
     $ hawkeye -v
-    hawkeye info version 0.2.2 deployed
+    hawkeye info version 0.2.3 deployed
     hawkeye info opened watch file './.hawkeye'
     hawkeye info tracking target '/any/absolute/path'
     hawkeye info tracking target 'relative/paths/too'
